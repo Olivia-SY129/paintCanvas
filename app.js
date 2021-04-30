@@ -90,17 +90,28 @@ function stopDrawing() {
     drawing = false;
 }
 
+// Get position of touch event
+function getTouchPos(event) {
+    const canvasRec = canvas.getBoundingClientRect();
+    return {
+        x: event.touches[0].clientX - canvasRec.left,
+        y: event.touches[0].clientY - canvasRec.top
+    };
+}
+
 function onPenMove(e) {
     let x = e.offsetX;
     let y = e.offsetY;
     if(e.touches !== undefined) {
-        x = e.touches[0].clientX
-        y = e.touches[0].clientY
+        getTouchPos(e);
+        x = getTouchPos(e).x;
+        y = getTouchPos(e).y;
     }
     if(!drawing) {
         ctx.beginPath();
         ctx.moveTo(x,y);
     } else {
+        console.log(x,y)
         ctx.lineTo(x,y);
         ctx.stroke();
     }
@@ -118,6 +129,23 @@ if(canvas) {
     canvas.addEventListener("touchmove", onPenMove);
     canvas.addEventListener("touchstart", startDrawing);
     canvas.addEventListener("touchend", stopDrawing);
+
+    // prevent scrolling when screen is touched
+    document.body.addEventListener("touchstart", function (e) {
+        if (e.target == canvas) {
+            e.preventDefault();
+        }
+        }, false);
+    document.body.addEventListener("touchend", function (e) {
+        if (e.target == canvas) {
+            e.preventDefault();
+            }
+        }, false);
+    document.body.addEventListener("touchmove", function (e) {
+            if (e.target == canvas) {
+            e.preventDefault();
+            }
+        }, false);
 }
 
 // Fill/brush - change paint mode

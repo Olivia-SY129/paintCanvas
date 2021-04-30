@@ -161,10 +161,12 @@ function changeMode(e) {
         filling = true;
         paintMode.innerText = 'Brush';
         canvas.addEventListener('mousedown', fillCanvas);
+        canvas.addEventListener('touchstart', fillCanvas);
     } else {
         filling = false;
         paintMode.innerText = 'Fill';
         canvas.removeEventListener('mousedown', fillCanvas);
+        canvas.removeEventListener('touchstart', fillCanvas);
     }
 }
 

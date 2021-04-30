@@ -31,6 +31,7 @@ body {
   border-radius: 0.5rem;
   box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.397),
     -2px 3px 3px rgba(204, 204, 204, 0.397);
+  touch-action: none;
 }
 
 .controls_brushSize {

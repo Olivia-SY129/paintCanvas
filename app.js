@@ -58,10 +58,12 @@ colors.forEach(color => color.addEventListener('click', changeColor));
 
 // Change stroke thickness
 const brushSize_controler = document.querySelector('.brushSize');
+const sizeIndicator = document.querySelector(".sizeIndicator");
 
 function changeLineWidth(e) {
     brushSize = e.target.value;
     ctx.lineWidth = brushSize;
+    sizeIndicator.innerText = brushSize;
 }
 
 brushSize_controler.addEventListener('input', changeLineWidth);
@@ -88,9 +90,13 @@ function stopDrawing() {
     drawing = false;
 }
 
-function onMouseMove(e) {
-    const x = e.offsetX;
-    const y = e.offsetY;
+function onPenMove(e) {
+    let x = e.offsetX;
+    let y = e.offsetY;
+    if(e.touches !== undefined) {
+        x = e.touches[0].clientX
+        y = e.touches[0].clientY
+    }
     if(!drawing) {
         ctx.beginPath();
         ctx.moveTo(x,y);
@@ -101,11 +107,17 @@ function onMouseMove(e) {
 }
 
 if(canvas) {
-    canvas.addEventListener("mousemove", onMouseMove);
+    // mouse event
+    canvas.addEventListener("mousemove", onPenMove);
     canvas.addEventListener("click", dotDrawing);
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mouseup", stopDrawing);
     canvas.addEventListener("mouseleave", stopDrawing);
+
+    // touch event
+    canvas.addEventListener("touchmove", onPenMove);
+    canvas.addEventListener("touchstart", startDrawing);
+    canvas.addEventListener("touchend", stopDrawing);
 }
 
 // Fill/brush - change paint mode

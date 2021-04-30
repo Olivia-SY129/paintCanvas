@@ -7,6 +7,8 @@
 
 html {
   height: 100%;
+  color: #2c2c2c;
+  font-weight: 800;
 }
 
 body {
@@ -33,6 +35,14 @@ body {
 
 .controls_brushSize {
   margin: 1rem;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.brushSize {
+  position: fixed;
+  margin-left: 100px;
 }
 
 .controls_colors {
@@ -61,6 +71,7 @@ body {
   outline: none;
   border: solid 0.1px #2c2c2c28;
   border-radius: 3px;
+  font-weight: 700;
   background-color: rgb(255, 255, 255);
   box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.397),
     -2px 3px 3px rgba(204, 204, 204, 0.397);

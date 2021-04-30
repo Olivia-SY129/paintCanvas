@@ -1,0 +1,68 @@
+@import "reset.css";
+
+:root {
+  --color-background: #f6f9fc;
+  --color-canvas: white;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canvas {
+  margin-top: 2rem;
+  background-color: var(--color-canvas);
+  border-radius: 0.5rem;
+  box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.397),
+    -2px 3px 3px rgba(204, 204, 204, 0.397);
+}
+
+.controls_brushSize {
+  margin: 1rem;
+}
+
+.controls_colors {
+  display: flex;
+  flex-direction: row;
+}
+
+.controls_color {
+  margin: 0.2rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px rgba(204, 204, 204, 0.397),
+    -2px 2px 2px rgba(204, 204, 204, 0.397);
+}
+
+.white {
+  border: 0.1px solid #2c2c2c28;
+}
+
+.controls_btns button {
+  width: 5rem;
+  margin: 1rem;
+  padding: 0.6rem;
+  outline: none;
+  border: solid 0.1px #2c2c2c28;
+  border-radius: 3px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 3px 3px 3px rgba(204, 204, 204, 0.397),
+    -2px 3px 3px rgba(204, 204, 204, 0.397);
+  cursor: pointer;
+}
